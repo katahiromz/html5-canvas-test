@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Cache-control" content="public" />
+<title>画像処理</title>
+<script src="data.js"></script>
+<script>
+	function pixel_NAND(ctx_A, ctx_B, ctxOut, width, height) {
+		let img_A = ctx_A.getImageData(0, 0, width, height);
+		let img_B = ctx_B.getImageData(0, 0, width, height);
+		let img = ctxOut.getImageData(0, 0, width, height);
+		for (let i = 0; i < img_A.width * img_A.height; ++i) {
+			let k = 4 * i;
+			let value = (!(img_A.data[k] && img_B.data[k]) ? 255 : 0);
+			img.data[k] = img.data[k + 1] = img.data[k + 2] = value;
+			img.data[k + 3] = 255;
+		}
+		ctxOut.putImageData(img, 0, 0);
+	}
+	function doCanvas() {
+		let canvas0 = document.getElementById("canvas0");
+		let canvas1 = document.getElementById("canvas1");
+		let canvas2 = document.getElementById("canvas2");
+		let img_A = new Image();
+		img_A.onload = function() {
+			let img_B = new Image();
+			img_B.onload = function() {
+				let width = img_A.width, height = img_A.height;
+				let ctx_A = canvas0.getContext("2d");
+				let ctx_B = canvas1.getContext("2d");
+				ctx_A.drawImage(img_A, 0, 0);
+				ctx_B.drawImage(img_B, 0, 0);
+				let ctx = canvas2.getContext("2d");
+				pixel_NAND(ctx_A, ctx_B, ctx, width, height);
+			};
+			img_B.src = data_B;
+		};
+		img_A.src = data_A;
+	}
+	window.onload = function() {
+		doCanvas();
+	};
+	</script>
+</head>
+<body>
+	<h1>ピクセルのNAND</h1>
+	<table border="2">
+		<tbody>
+			<tr>
+				<th>A</th>
+				<th>B</th>
+				<th>A NAND B</th>
+			</tr>
+			<tr>
+				<td><canvas id="canvas0" width="180" height="138" /></td>
+				<td><canvas id="canvas1" width="180" height="138" /></td>
+				<td><canvas id="canvas2" width="180" height="138" /></td>
+			</tr>
+		</tbody>
+	</table>
+	<hr />
+	<p>
+		<a href="index.html">Back</a>
+	</p>
+</body>
+</html>

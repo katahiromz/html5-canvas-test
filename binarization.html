@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Cache-control" content="public" />
+<title>画像処理</title>
+<script src="data.js"></script>
+<script>
+	// 二値化。
+	function binarization(ctxIn, ctxOut, width, height, threshold) {
+		let img = ctxIn.getImageData(0, 0, width, height);
+		for (let i = 0; i < img.width * img.height; ++i) {
+			let k = 4 * i;
+			let value = (0.299 * img.data[k] + 0.587 * img.data[k + 1] + 0.114 * img.data[k + 2]) / 255.0;
+			value = (value > threshold ? 255 : 0);
+			img.data[k] = img.data[k + 1] = img.data[k + 2] = value;
+			img.data[k + 3] = 255;
+		}
+		ctxOut.putImageData(img, 0, 0);
+	}
+	function doCanvas0() {
+		let canvas0 = document.getElementById("canvas0");
+		let ctx = canvas0.getContext("2d");
+		let img = new Image();
+		img.onload = function() {
+			let width = img.width, height = img.height;
+			ctx.drawImage(img, 0, 0);
+		};
+		img.src = data1;
+	}
+	function doCanvas1() {
+		let canvas1 = document.getElementById("canvas1");
+		let ctx = canvas1.getContext("2d");
+		let img = new Image();
+		img.onload = function() {
+			let width = img.width, height = img.height;
+			ctx.drawImage(img, 0, 0);
+			binarization(ctx, ctx, width, height, 0.5);
+		};
+		img.src = data1;
+	}
+	window.onload = function() {
+		doCanvas0();
+		doCanvas1();
+	};
+	</script>
+</head>
+<body>
+	<h1>二値化 (binarization)</h1>
+	<table border="2">
+		<tbody>
+			<tr>
+				<th>オリジナル</th>
+				<th>二値化</th>
+			</tr>
+			<tr>
+				<td><canvas id="canvas0" width="149" height="200" /></td>
+				<td><canvas id="canvas1" width="149" height="200" /></td>
+			</tr>
+		</tbody>
+	</table>
+	<hr />
+	<p>
+		<a href="index.html">Back</a>
+	</p>
+</body>
+</html>
