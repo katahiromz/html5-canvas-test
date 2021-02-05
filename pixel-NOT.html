@@ -26,6 +26,7 @@
 			ctx_A.drawImage(img_A, 0, 0);
 			let ctx = canvas1.getContext("2d");
 			pixel_NOT(ctx_A, ctx, width, height);
+			doDownloadCanvas("pixel_NOT", canvas1);
 		};
 		img_A.src = data_A;
 	}

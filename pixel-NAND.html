@@ -32,6 +32,7 @@
 				ctx_B.drawImage(img_B, 0, 0);
 				let ctx = canvas2.getContext("2d");
 				pixel_NAND(ctx_A, ctx_B, ctx, width, height);
+				doDownloadCanvas("pixel_NAND", canvas2);
 			};
 			img_B.src = data_B;
 		};

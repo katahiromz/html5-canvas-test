@@ -35,6 +35,7 @@
 			let width = img.width, height = img.height;
 			ctx.drawImage(img, 0, 0);
 			binarization(ctx, ctx, width, height, 0.5);
+			doDownloadCanvas("binarization", canvas1);
 		};
 		img.src = data1;
 	}

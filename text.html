@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Cache-control" content="public" />
+<title>画像処理</title>
+<script src="data.js"></script>
+<script>
+	// モザイク処理。
+	function doDrawText(ctx, x, y, text, font) {
+		ctx.font = font;
+		ctx.fillStyle = "black";
+		ctx.textBaseline = 'middle';
+  	ctx.textAlign = "center";
+		ctx.fillText(text, x, y);
+	}
+	function doCanvas() {
+		let canvas0 = document.getElementById("canvas0");
+		let ctx0 = canvas0.getContext("2d");
+		let width = 200, height = 200;
+		ctx0.fillStyle = "yellow";
+		ctx0.fillRect(0, 0, width, height);
+		doDrawText(ctx0, width / 2, height / 2, "あ", "200px 'HG教科書体'");
+		doDownloadCanvas("text", canvas0)
+	}
+	window.onload = function() {
+		doCanvas();
+	};
+	</script>
+</head>
+<body>
+	<h1>テキスト (text)</h1>
+	<table border="2">
+		<tbody>
+			<tr>
+				<th>テキスト描画</th>
+			</tr>
+			<tr>
+				<td><canvas id="canvas0" width="200" height="200" /></td>
+			</tr>
+		</tbody>
+	</table>
+	<hr />
+	<p>
+		<a href="index.html">Back</a>
+	</p>
+</body>
+</html>

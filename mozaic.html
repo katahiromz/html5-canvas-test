@@ -27,6 +27,7 @@
 			let width = img.width, height = img.height;
 			ctx0.drawImage(img, 0, 0);
 			mosaic(ctx0, ctx1, width, height, 10);
+			doDownloadCanvas("mozaic", canvas1);
 		};
 		img.src = data1;
 	}

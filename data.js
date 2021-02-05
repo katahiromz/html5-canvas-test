@@ -6,3 +6,13 @@ let data_A = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAACKCAIAAACM3/e4
 
 // B.png
 let data_B = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAACKCAIAAACM3/e4AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABDklEQVR4nO3XwQ3CMBQFQYf+C00JuYVLriuIBMTATAVP8upLHgMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4aLl6wFP2fb96wo9YlhMvfnvfDr6dOEjiIImDJI6JrOs6xti27eohB7+V/+K3wmuIYyKzHUhxTOTUzf8AcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwAAAAAAAAAAHO5AyhZDysDoVJ1AAAAAElFTkSuQmCC";
+
+function doDownloadCanvas(filename, canvas) {
+	let url = canvas.toDataURL();
+	let type = url.substr(5, url.indexOf(';') - 5);
+	let link = document.createElement('a');
+	link.href = url;
+	link.download = filename + '.' + type.substr(6);
+	link.click();
+	link.remove();
+}
