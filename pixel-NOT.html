@@ -17,16 +17,16 @@
 		ctxOut.putImageData(img, 0, 0);
 	}
 	function doCanvas() {
-		let canvas0 = document.getElementById("canvas0");
-		let canvas1 = document.getElementById("canvas1");
+		let canvas0 = document.getElementById('canvas0');
+		let canvas1 = document.getElementById('canvas1');
 		let img_A = new Image();
 		img_A.onload = function() {
 			let width = img_A.width, height = img_A.height;
-			let ctx_A = canvas0.getContext("2d");
+			let ctx_A = canvas0.getContext('2d');
 			ctx_A.drawImage(img_A, 0, 0);
-			let ctx = canvas1.getContext("2d");
+			let ctx = canvas1.getContext('2d');
 			pixel_NOT(ctx_A, ctx, width, height);
-			doDownloadCanvas("pixel_NOT", canvas1);
+			doDownloadCanvas('pixel_NOT', canvas1);
 		};
 		img_A.src = data_A;
 	}

@@ -8,19 +8,22 @@
 	// モザイク処理。
 	function doDrawText(ctx, x, y, text, font) {
 		ctx.font = font;
-		ctx.fillStyle = "black";
+		ctx.fillStyle = 'black';
 		ctx.textBaseline = 'middle';
-  	ctx.textAlign = "center";
+		ctx.textAlign = 'center';
 		ctx.fillText(text, x, y);
+		ctx.strokeStyle = 'red';
+		ctx.lineWidth = 3;
+		ctx.strokeText(text, x, y);
 	}
 	function doCanvas() {
-		let canvas0 = document.getElementById("canvas0");
-		let ctx0 = canvas0.getContext("2d");
+		let canvas0 = document.getElementById('canvas0');
+		let ctx0 = canvas0.getContext('2d');
 		let width = 200, height = 200;
-		ctx0.fillStyle = "yellow";
+		ctx0.fillStyle = 'yellow';
 		ctx0.fillRect(0, 0, width, height);
-		doDrawText(ctx0, width / 2, height / 2, "あ", "200px 'HG教科書体'");
-		doDownloadCanvas("text", canvas0)
+		doDrawText(ctx0, width / 2, height / 2, 'あ', "200px 'HG教科書体'");
+		doDownloadCanvas('text', canvas0)
 	}
 	window.onload = function() {
 		doCanvas();

@@ -18,16 +18,16 @@
 		}
 	}
 	function doCanvas() {
-		let canvas0 = document.getElementById("canvas0");
-		let canvas1 = document.getElementById("canvas1");
-		let ctx0 = canvas0.getContext("2d");
-		let ctx1 = canvas1.getContext("2d");
+		let canvas0 = document.getElementById('canvas0');
+		let canvas1 = document.getElementById('canvas1');
+		let ctx0 = canvas0.getContext('2d');
+		let ctx1 = canvas1.getContext('2d');
 		let img = new Image();
 		img.onload = function() {
 			let width = img.width, height = img.height;
 			ctx0.drawImage(img, 0, 0);
 			mosaic(ctx0, ctx1, width, height, 10);
-			doDownloadCanvas("mozaic", canvas1);
+			doDownloadCanvas('mozaic', canvas1);
 		};
 		img.src = data1;
 	}

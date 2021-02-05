@@ -18,8 +18,8 @@
 		ctxOut.putImageData(img, 0, 0);
 	}
 	function doCanvas0() {
-		let canvas0 = document.getElementById("canvas0");
-		let ctx = canvas0.getContext("2d");
+		let canvas0 = document.getElementById('canvas0');
+		let ctx = canvas0.getContext('2d');
 		let img = new Image();
 		img.onload = function() {
 			let width = img.width, height = img.height;
@@ -28,14 +28,14 @@
 		img.src = data1;
 	}
 	function doCanvas1() {
-		let canvas1 = document.getElementById("canvas1");
-		let ctx = canvas1.getContext("2d");
+		let canvas1 = document.getElementById('canvas1');
+		let ctx = canvas1.getContext('2d');
 		let img = new Image();
 		img.onload = function() {
 			let width = img.width, height = img.height;
 			ctx.drawImage(img, 0, 0);
 			binarization(ctx, ctx, width, height, 0.5);
-			doDownloadCanvas("binarization", canvas1);
+			doDownloadCanvas('binarization', canvas1);
 		};
 		img.src = data1;
 	}
